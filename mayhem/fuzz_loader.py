@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
+from ctypes import ArgumentError
+
 import atheris
 import io
 import sys
 
 from pefile import PEFormatError
+from unicorn import UcError
 
 with atheris.instrument_imports():
     import speakeasy
@@ -15,9 +18,9 @@ def TestOneInput(data):
     try:
         se = speakeasy.Speakeasy()
         module = se.load_module(data=data)
-        del module
-        del se
-    except (speakeasy.errors.SpeakeasyError, PEFormatError):
+        se.run_module(module)
+        se.get_report()
+    except (speakeasy.errors.SpeakeasyError, PEFormatError, UcError, ArgumentError):
         return -1
     except AttributeError:
         return -1
