@@ -1,0 +1,8 @@
+project: speakeasy
+target: loader-fuzz
+testsuite:
+    - file://mayhem/testsuite
+cmds:
+  - cmd: /src/mayhem/fuzz_loader.py
+    libfuzzer: true
+    max_length: 14000
