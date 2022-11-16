@@ -12,7 +12,7 @@ def TestOneInput(data):
     try:
         se = speakeasy.Speakeasy()
         module = se.load_module(data=data)
-        se.run_module(module)
+        # se.run_module(module)
         se.get_report()
     except speakeasy.errors.SpeakeasyError:
         return -1
