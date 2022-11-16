@@ -9,15 +9,17 @@ with atheris.instrument_imports():
     import speakeasy
     import speakeasy.errors
 
+
 @atheris.instrument_func
 def TestOneInput(data):
     try:
         se = speakeasy.Speakeasy()
         module = se.load_module(data=data)
-        # se.run_module(module)
-        se.get_report()
+        del module
+        del se
     except (speakeasy.errors.SpeakeasyError, PEFormatError):
         return -1
+
 
 def main():
     atheris.Setup(sys.argv, TestOneInput)
