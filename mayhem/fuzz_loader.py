@@ -17,8 +17,7 @@ with atheris.instrument_imports():
 def TestOneInput(data):
     try:
         se = speakeasy.Speakeasy()
-        module = se.load_module(data=data)
-        se.run_module(module)
+        se.load_module(data=data)
         se.get_report()
     except (speakeasy.errors.SpeakeasyError, PEFormatError, UcError, ArgumentError):
         return -1
