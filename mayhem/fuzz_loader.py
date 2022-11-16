@@ -3,6 +3,8 @@ import atheris
 import io
 import sys
 
+from pefile import PEFormatError
+
 with atheris.instrument_imports():
     import speakeasy
     import speakeasy.errors
@@ -14,7 +16,7 @@ def TestOneInput(data):
         module = se.load_module(data=data)
         # se.run_module(module)
         se.get_report()
-    except speakeasy.errors.SpeakeasyError:
+    except (speakeasy.errors.SpeakeasyError, PEFormatError):
         return -1
 
 def main():
