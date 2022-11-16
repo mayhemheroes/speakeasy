@@ -5,4 +5,3 @@ testsuite:
 cmds:
   - cmd: /src/mayhem/fuzz_loader.py
     libfuzzer: true
-    max_length: 14000

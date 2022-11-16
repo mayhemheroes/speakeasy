@@ -19,6 +19,11 @@ def TestOneInput(data):
         del se
     except (speakeasy.errors.SpeakeasyError, PEFormatError):
         return -1
+    except AttributeError:
+        return -1
+    except ValueError as e:
+        if 'architecture' not in str(e):
+            raise
 
 
 def main():
